@@ -1,0 +1,37 @@
+{% load static %}
+<header>
+    <div>
+        <img src="/static/images/download.jpeg" width="100px">&nbsp;&nbsp;
+        <a href="{% url 'home' %}" style="text-decoration:none;color:black;">Home</a> &nbsp;&nbsp;&nbsp;
+        <a href="{% url 'about' %}" style="text-decoration:none;color:black;">About Us</a>
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:white;color:black;border-color:white;">
+            Account
+          </button>
+          <ul class="dropdown-menu">
+              {% comment %} <a  href="{% url 'prof' %}" style="text-decoration:none;color:black;"><li>Profile</li></a> {% endcomment %}
+              <a href="{% url 'wishlist' %}" style="text-decoration:none;color:black;"><li>Wishlist</li></a>
+              <a href="{% url 'orders' %}" style="text-decoration:none;color:black;"><li>Orders</li></a>
+              <a href="{% url 'log' %}" style="text-decoration:none;color:black;"><li>Logout</li></a>&nbsp;&nbsp;&nbsp;
+            </ul>    
+        
+        </div>
+    <div>
+    <form method="get" action="{% url 'items' %}">
+        <p>{{a}}</p>
+        <input type="search" name="search_products"  placeholder="Search Here"  autocomplete="off" class="search">          
+        
+    {% comment %} <a href="{% url 'lo' %}"  style="text-decoration:none;color:white;">Login/Sign up</a> {% endcomment %}
+    </form>
+    </div>
+    <div class="main1 mt-4">
+        <a href="{% url 'reg' %}" style="text-decoration:none;color:black;">Register</a>&nbsp;&nbsp;&nbsp;
+        <a href="{% url 'lo' %}" style="text-decoration:none;color:black;">Login</a>&nbsp;&nbsp;&nbsp;
+        <a href="{% url 'cart' %}" style="text-decoration:none;color:black;" ><img src="\static\images\images.png" width="30px">Cart</a>&nbsp;&nbsp;&nbsp;
+
+    </div>
+</header>
+
+<style>
+    input{width:300%;height:50px;}
+    button{display: flex;flex-direction: column;}
+</style>

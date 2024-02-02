@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supermarket</title>
+    {% block link %}
+    <link rel='stylesheet' href="{% static "css/main.css" %}">
+    {% endblock %}
+
+    {% block content %}
+
+</head>
+
+<body>
+    <div id="cart-container">
+        <h2 class="my">My Cart</h2>
+
+        <!-- Cart items table -->
+        <table>
+            <thead>
+                <tr>                
+                    <th>Product</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    {% comment %} <th>Total</th> {% endcomment %}
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Example cart item row -->
+                {% for cart in cart_items %}
+
+                <tr>
+                    <td  class="round-circle"><img src="/main/{{cart.allitems.image}}" width="100px"></td>
+                    <td>{{cart.allitems.name}}</td>
+                    <td>{{cart.quantity}}</td>
+                    <td class="rupee" style='color:red;' name="price">$ {{cart.allitems.price}}</td>
+                    <td class="remove">
+                        {% comment %} <a href="{% url 'reject' item.id %}"> {% endcomment %}
+                        <a href="{% url 'reject' cart.id  %}"><img src="../static/images/download (1).jpeg" width="40px"></a>
+                    </a>
+                      </td>
+                    
+                </tr>
+                {% endfor %}
+                <!-- Add more rows for additional items -->
+            </tbody>
+        </table><hr>
+
+        <!-- Checkout button -->
+        <div>
+        <p style='color:red;'>Total price : $ {{total_price}}</p><hr>
+        <button type="submit" class="check" value="Proceed to Checkout"><a href="{% url 'placeorder' %}" style="text-decoration:none;color:white;background-color:orange;">Proceed to Checkout</a></button>
+        </a>
+        </div>
+    </div>
+    {% endblock%}
+</body>
+
+</html>

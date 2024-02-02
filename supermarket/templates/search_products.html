@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocSupermarketument</title>
+</head>
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+{% endblock %}
+<body>
+    {% block content %}
+    <div class="product">
+        {% for i in get %}
+        <div class="get">
+            <a href="{% url 'det' i.name %}" style="text-decoration:none;color:black;">
+                <img src="/main/{{i.image}}" width="200px" height="200px"><br><br>
+                <p>{{i.name}}</p>
+                <div class="span">
+                    <span class="new-price">${{i.price}}</span>
+                    <span class="old-price">${{i.oldprice}}</span>                    
+                </div><br>
+                {% comment %} <form method="post">
+                    {% csrf_token %}
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKcAAACUCAMAAADBJsndAAAAY1BMVEX///8AAAABAQFoaGh2dnb39/dISEiUlJTy8vLg4OD7+/u2trbb29u6urrt7e2NjY3n5+d9fX07OzucnJzPz88NDQ1VVVUcHBzBwcHV1dVQUFA0NDQWFhasrKwsLCwiIiJfX1/AQfiUAAAEEUlEQVR4nO2ci3KiMBRAewPIS0HkoaKA//+VS1AhCajU3EBn9p6ZbWmF7GkeNyGT5OeHIAiCIAiCIP4mWZW6eKRVZkLST+occMnrxEe23MbIjk/iLabm7gDAGEN27FI87NAsvZQniiz5UG3/pR6OZuDmgJ6XvSiD3A1QPHfMnGYnylCKfns0qdmJHhEak2MLdZP1Xz5ezrvrcWE72p5Z/kzcTHvvRHP9kG8DGzKh2eDRDNnLwNbVdITEIM4iD4soi0HIAt2CPwl16qT7R79JW7fg46G+pyhyIunQlGLNpOze84I9ZmjHNpfeU7eCWr2nhdS9CXhW72lpJjV4IsQ4FR6byRMP8sSFPHEhT1zIExfyxIU8cSFPXMgTF/LEhTxxIU9cyBMX8sSFPHEhT1zIExfyxIU8cSFPXMgTF/LEhTxxIU9cyBMX8sSFPHEhT1xW9YzO2Tmad+uKnkHF18xdqllLo9fzjOK8WyaZx3OydDXPqLgv4G6fKWaIruQZnOCxRLb7cvpY9ut4Ou5xWBrNV5u7H59YwzNKQNxdwa+SD2W/hudpA/J+AP7D5v2S5hU8wwbUbQv8xyb8U55OLJW5WPbxu8cW9vRLUVPYuMAvytfrrxf2PJWDW9/eB+fy5XaYZT3dRt5Uci2u8i8a9w947m2QrerQCWv5V2Dv1/bMSqGd8+8130vk14I8/7ic3BexmGcQXpVw9NgN0K/gf4pew4ledCnPfQxiC2JQV8+bnKqWP4J4XPYLefqWWObtxUVs2buL8qk1ClDLeJ4OUtAEuMki0p/B7zyovegSnkHKFM1k9HCiiLJUrqQLeEaJUqrNxKtGUDXKXfIIyrzn+QBy4NlMb23ciqMo/v0gBijTnkEXyMXG/HLjtZ+A3Kk2QoAy7OnERzkz320R9iqQs/Q4jKDMevo3EFvQRDuWkeMCCHHBqOd9j7lQ5tanXbf3ACWU/XMvuUnPKldahv1535wnjlX4w3ll2NO31S7o7YtFT6h2TrZv0vNcKv/dZu7+0GyjPFmeTXkG96optvNxl/0SXkmlCtNW0sCEZ+JJL+h8rPa7HbKpMsxvO6fEgGcxGh3Nq5oDo0pqFQY8lWKD4veHAGwLUCoOvieT8+L47r38JaOejKF7yrmah9/NgjthLuekSc/2Ze38dYJn8V3UoGcXpGfOv08SSS/Spjx5ONI8lyRwr6ootud9EKF7fEogDmVMeHbz7tNTG79jXxiLS4+EEwzNVjQB0RTTs0t1albjK4JQFEX1fDVL9CXdzBSa5/O8i25EjHvihT8EKP3zLnZ9/3bVPeJjTHzt+2Pto41u3bsNwzwfa6ANUF3icNNOan8fe72YR9CFz0MAUrDbWcXty2HHZ4LwVlgmioogCIIg/mP+AQTuN+siHc/9AAAAAElFTkSuQmCC" width="30px" class="imgg">               
+                   <input type="submit" value="Add" width="100px">
+               </form> {% endcomment %}
+            </a>
+        </div>
+
+        {% endfor %}
+    </div>
+    {% endblock %}
+</body> 
+</html>

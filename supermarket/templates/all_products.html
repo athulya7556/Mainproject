@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supermarket</title>
+</head>
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+{% endblock %}
+<script src="../static/js/anim.js"></script>
+
+<body>
+    {% block content %}
+    {% comment %} <h1 class="h1 mt-3">FRESH FRESH FRESH ...</h1> {% endcomment %}
+    {% comment %} <h2 class="ev">EVERYTHING YOU NEED FOR DELICIOUS MEAL</h2> {% endcomment %}
+    {% comment %} <div id="animation-container">
+        <img src="https://www.bigbasket.com/media/uploads/banner_images/ZXPL6346-ZXPL6345-ZXPL6340-ZXPL6336-26dec23.jpg?tr=w-1920,q=80" class="visible" alt="Image 1">
+        <img src="https://www.bigbasket.com/media/uploads/banner_images/L2-YXPL154-1200x300-25thmar.jpg?tr=w-1920,q=80" alt="Image 2">
+        <img src="https://www.bigbasket.com/media/uploads/banner_images/ZXPL6291-l1-byc-c-Bigbasket-dishwash-liquid-1200x300-25-DEC-23.jpg?tr=w-1920,q=80" alt="Image 3">
+    </div> {% endcomment %}
+
+    <div class="main mt-5">
+        {% for i in products %}
+        <div class="div">
+            <a href='{% url 'items1' i.name  %}' style="text-decoration:none;color:black;">
+                <img src="/main/{{i.image}}" width="200px" height="200px"><br><br>
+            <p>{{i.name}}</p>
+            {% comment %} <p>{{i.description}}</p> {% endcomment %}
+            </a>
+            {% comment %} <div class="bt1">
+            <button class="b1">-</button>
+            <button class="b2">Add</button>
+            <button class="b3">+</button>
+            </div> {% endcomment %}
+        </div>
+
+        {% endfor %}
+    </div>
+    {% endblock %}
+</body> 
+</html>

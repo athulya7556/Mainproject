@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% block link %}
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+{% endblock %}
+
+</head>
+<body>
+
+    {% block content %}
+
+    <div class="about">
+        <img src="../static/images/about.jpg" width="400px"><br><br>
+            {% comment %} <h4>What is Freshers.com</h4> {% endcomment %}
+        <p class="aa">Freshers.com (Innovative Retail Concepts Private Limited) is India’s largest online grocery store. With over 18,000 products and over a 1000 brands in our catalogue you will find everything you are looking for. Right from fresh Fruits and Vegetables, Rice and Dals, Spices and Seasonings to Packaged products, Beverages, Personal care products, Meats – we have it all.
+            Choose from a wide range of options in every category, exclusively handpicked to help you find the best quality available at the lowest prices. Select a time slot for delivery and your order will be delivered right to your doorstep, anywhere in Bangalore, Hyderabad, Mumbai, Pune, Chennai, Delhi, Noida, Mysore, Coimbatore, Vijayawada-Guntur, Kolkata, Ahmedabad-Gandhinagar, Lucknow-Kanpur, Gurgaon, Vadodara, Visakhapatnam, Surat, Nagpur, Patna, Indore and Chandigarh Tricity You can pay online using your debit / credit card or by cash / sodexo on delivery.
+            We guarantee on time delivery, and the best quality!</p>
+    </div>
+    {% endblock %}
+</body>
+
+</html>
