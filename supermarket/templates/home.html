@@ -1,0 +1,123 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supermarket</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- JavaScript -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+</head>
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+{% endblock %}
+<script src="../static/js/anim.js"></script>
+<header>
+  <div>
+      <img src="../static/images/download.jpeg" width="100px">
+      <a href="{% url 'home' %}" style="text-decoration:none;color:black;margin-left:10px">Home</a> &nbsp; &nbsp;
+      <a href="{% url 'about' %}" style="text-decoration:none;color:black;">About Us</a>
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:white;color:black;border-color:white;">
+        Account
+      </button>
+      <ul class="dropdown-menu">
+          {% comment %} <a  href="{% url 'prof' %}" style="text-decoration:none;color:black;"><li>Profile</li></a> {% endcomment %}
+          <a href="{% url 'wishlist' %}" style="text-decoration:none;color:black;"><li>Wishlist</li></a>
+          <a href="{% url 'orders' %}" style="text-decoration:none;color:black;"><li>Orders</li></a>
+          <a href="{% url 'log' %}" style="text-decoration:none;color:black;"><li>Logout</li></a>&nbsp;&nbsp;&nbsp;
+        </ul>      
+  </div>
+  <div>
+  <form method="get" action="{% url 'items' %}">
+      <p>{{a}}</p>
+      <input type="search" name="search_products"  placeholder="Search Here"  autocomplete="off" class="search">          
+      
+  {% comment %} <a href="{% url 'lo' %}"  style="text-decoration:none;color:white;">Login/Sign up</a> {% endcomment %}
+  </form>
+  </div>
+  <div class="main1 mt-4">
+      <a href="{% url 'reg' %}" style="text-decoration:none;color:black;">Register</a>&nbsp;&nbsp;&nbsp;
+      <a href="{% url 'lo' %}" style="text-decoration:none;color:black;">Login</a>&nbsp;&nbsp;&nbsp;
+      {% comment %} <a href="{% url 'log' %}" style="text-decoration:none;color:black;">Logout</a>&nbsp;&nbsp;&nbsp; {% endcomment %}
+      <a href="{% url 'cart' %}" style="text-decoration:none;color:black;" ><img src="..\static\images\images.png" width="30px">Cart</a>&nbsp;&nbsp;&nbsp;
+
+    </div>
+</header>
+<body class="body">
+
+  <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+    {% block content %}
+    <br>
+    <div class="hom1">
+    <h1 class="h1 mt-3">FRESH PRODUCTS</h1>
+    {% comment %} <h3 class="h3"><a href="{% url 'about' %}" style="color:red;">What is fresher.com?</a></h3> {% endcomment %}
+    <h2 class="do">Don't strave</h2>
+    <h2 class="doi" >Just Order</h2>
+    <h2 class="h3"> To start your day fresh everyday..<img src="data:image/png;base64,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" width="30px"></h2><br>
+
+    {% comment %} <img src="../static/images/preview.jpg" width="100%" height="500px"> {% endcomment %}
+
+   
+    <div id="animation-container">
+       
+        <img src="https://www.bigbasket.com/media/uploads/banner_images/B2C112206743-12434-DT-460-all-cm-HUL-241123.jpg?tr=w-1920,q=80" class="visible" alt="Image 1">
+        <img src="https://www.bigbasket.com/media/uploads/banner_images/B2C112206743-12435-DT-460-all-cm-HUL-241123.jpg?tr=w-1920,q=80" alt="Image 2">
+        <img src="https://www.bigbasket.com/media/uploads/banner_images/hp_bcd_m_bcd_250923_400.jpg?tr=w-1920,q=80">
+        <img src="https://www.bigbasket.com/media/uploads/banner_images/B2C012208077-15000-DT-bathing-1600x460-all.jpg?tr=w-1920,q=80">
+    </div>
+  </div>
+    <div class="hh mt-3"><br>
+      <h4 class="h4">Show By Category</h4>
+
+      <div class="category mt-5">
+        {% for i in categories %}
+        <div class="cat">
+          <a href="{% url 'pro'  i.name %}"  style="text-decoration:none;color:black;">
+          <img src="/main/{{i.image}}" width="200px" height="200px"><br><br>
+             <p>{{i.name}}</p>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+   
+    </div><br><br>
+    {% comment %} <img src="../static/images/grocery.jpg"class="gro"> {% endcomment %}
+{% comment %} <h2>Everthing is special in this place</h2> {% endcomment %}
+{% comment %} <div>
+  {% if messages %}
+  <ul class="messages">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+  </ul>
+  {% endif %}
+ </div><br><br> {% endcomment %}
+
+</body><br><br>
+{% endblock %}
+<script>
+  {% for flashmsg in messages %}
+  alertify.set('notifier','position', 'top-right');
+  alertify.success('{{flashmsg}}');
+   {% endfor %}
+</script>
+<footer>
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+      © 2023 Copyright:
+      <a class="text-reset fw-bold" href="">Fresher.com</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  
+</footer>  
+  </html>
+
+
+  {% comment %} <img src="../static/images/images.png" width="30px"> {% endcomment %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supermarket</title>
+</head>
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+<script src="stock.js"></script>
+
+{% endblock %}
+<body>
+    {% block content %}
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+  
+    <div class="detail mt-5">
+        <img src="/main/{{details.image}}" width="250px"><br>  
+        <div class="detta">
+
+
+        <h3>{{details.name}}</h3><hr>
+            <p class="p2">{{details.description}}</p>
+            <div>
+                <span class="new-price">${{details.price}}</span>&nbsp;
+                <span class="old-price">MRP:{{details.oldprice}}</span>
+            </div> <br>           
+            <div class="button">
+                <button type="submit" class="cart"><a href="{% url 'add' details.name %}"  style="text-decoration:none;color:white;">Add to cart</a></button>
+                <button type="submit" class="buy" value="Buy now"><a href="{% url 'wish' details.name %}" style="text-decoration:none;color:white;">Add to Wishlist</a></button>
+            </div>
+        </div>
+        
+    </div>
+
+{% endblock %}
+</body>
+<script>
+    // Display a simple alert message
+    alert("This is a basic alert message!");
+
+    // Display an alert with a variable message
+    var dynamicMessage = "This is a dynamic message!";
+    alert(dynamicMessage);
+</script>
+
+</html>

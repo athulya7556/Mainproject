@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supermarket</title>
+    {% block link %}
+    <link rel='stylesheet' href="{% static "css/main.css" %}">
+    {% endblock %}
+    
+</head>
+{% block content %}
+
+<body class="content">
+    {% if message %}
+    alert("{{ message }}")
+    {% endif %}
+
+       <div class="container mt-3">
+        <div class="login mt-5">
+            <h2>Login</h2>
+            <form method="post">
+                {% csrf_token %}
+                <input type="text" placeholder="Enter Username" name="username" autocomplete="off" required><br><br>
+                <input type="password" placeholder="Enter Password" name="password" required><br> <br>           
+                <div>
+                    <button type="submit" class="bt">Login</button>
+                </div>        
+            </form>  
+        </div>    
+            <div class="image">
+                <img src="../static/images/login.jpg" width="100%">
+            </div> 
+       </div>
+</body>
+{% endblock %}
+
+</html>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+</div> 

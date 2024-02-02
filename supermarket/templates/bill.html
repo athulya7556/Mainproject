@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+{% endblock %}
+<body>
+    {% block content %}
+    <div class="payment justify-content: center;">
+        <form action="{% url 'placeorder' %}" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="card-shadow">
+                        <div class="card-body">
+                            <h6>Basic details</h6><hr>
+                            <div class="row checkoutform">
+                                <div class="col-md-6">
+                                    <label>Name</label>
+                                    <input type="text" class="form-control" placeholder="Enter name" name="name" autocomplete="off" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Email</label>
+                                    <input type="email" class="form-control" placeholder="Enter email" name="email" autocomplete="off" required>
+                                </div>
+                                <div class="col-md-12 mt-2">
+                                    <label>Address</label>
+                                    <textarea class="form-control" placeholder="Enter address" name="address" autocomplete="off" required></textarea>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Phone</label>
+                                    <input type="text" class="form-control" placeholder="Enter phone number" name="phone" autocomplete="off" required>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <label>City</label>
+                                    <input type="text" class="form-control" placeholder="Enter city" name="city" autocomplete="off" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>State</label>
+                                    <input type="text" class="form-control" placeholder="Enter state" name="state" autocomplete="off" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Pin code</label>
+                                    <input type="text" class="form-control" placeholder="Enter Pin code" name="pincode" autocomplete="off" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5">
+                {% comment %} <h4>Total price:
+                <span class="">{{cart_total_price}}</span></h4> {% endcomment %}
+                <input type="hidden" value="COD" name="payment_mode">
+                <div class=" place mt-3">
+                    <button type="submit" class="btn btn-success w-50">Place order</button>
+
+                </div>
+            </div>
+        </form>
+        
+    </div>
+    {% endblock %}
+</body>
+</html>
+
+
+
+
